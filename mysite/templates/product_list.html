@@ -1,0 +1,34 @@
+<!-- templates/product_list.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог Видеокарт</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Ситилинк - Каталог видеокарт</h1>
+        <form method="get" id="sort-form">
+            <label for="sort">Сортировать по:</label>
+            <select name="sort" id="sort" onchange="document.getElementById('sort-form').submit();">
+                <option value="name" {% if request.GET.sort == 'name' %}selected{% endif %}>Названию</option>
+                <option value="id" {% if request.GET.sort == 'id' %}selected{% endif %}>Цене</option>
+            </select>
+        </form>
+    </header>
+    <main>
+        {% for videocard in videocards %}
+        <div class="card">
+            <a href="{% url 'videocard_detail' id=videocard.id %}">
+                <img src="{% static 'images/' %}{{ videocard.image_url }}" alt="{{ videocard.name }}">
+                <h2>{{ videocard.name }}</h2>
+                <p>{{ videocard.price }}</p>
+            </a>
+        </div>
+        {% endfor %}
+    </main>
+</body>
+</html>

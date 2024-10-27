@@ -1,0 +1,42 @@
+<!-- templates/product_detail.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ videocard.name }} - Детали</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Описание товара</h1>
+    </header>
+    <main class="product-page">
+        <div class="product-content">
+            <div class="image-container">
+                <img src="{% static 'images/' %}{{ videocard.image_url }}" alt="{{ videocard.name }}">
+            </div>
+            <div class="product-details">
+                <h2>{{ videocard.name }}</h2>
+                <p>{{ videocard.product_id }}</p>
+
+                <h2>Цена: {{ videocard.price }}</h2>
+
+                <p>Рассрочка: {{ videocard.credit_value }}₽ в месяц</p>
+
+                <h2>Характеристики</h2>
+                <p>Видеочипсет: {{ videocard.spec_1 }}</p>
+                <p>Память: {{ videocard.spec_2 }}</p>
+                <p>Интерфейс: {{ videocard.spec_3 }}</p>
+                <p>Разъемы: {{ videocard.spec_4 }}</p>
+                <p>Питание: {{ videocard.spec_5 }}</p>
+                <p>Охлаждение: {{ videocard.spec_6 }}</p>
+
+                <button class="back-button" onclick="window.history.back()">Назад</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
